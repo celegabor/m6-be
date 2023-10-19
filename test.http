@@ -1,0 +1,146 @@
+
+# get POSTS
+GET http://localhost:2105/posts/get
+#####
+
+# get by Id POSTS
+GET http://localhost:2105/posts/get/652981b9de5fc79e33b5bcfc
+#####
+
+# get by title
+GET http://localhost:2105/posts/get/bytitle?title=titolo
+#####
+
+# post POSTS
+POST http://localhost:2105/posts/post  HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "prova con referencing3",
+    "category": "category",
+    "cover": "https://upload.wikimedia.org/wikipedia/commons/0/08/Panorama_Manfredonia.JPG",
+    "readTime": {
+            "value": 190,
+            "unit": "mm"
+    },
+    "content": "html articolo",
+    "author": "65241bcdc708484be819cc73"
+    
+}
+####
+
+# put POSTS
+PUT  http://localhost:2105/posts/put/651d748ca99b283bfc4170db HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "BlogPost MODIFICATO",
+    "category": "categoria POST MODIFICATO",
+    "readTime": [{
+            "value": 1.95,
+            "unit": "mt"
+    }]
+}
+####
+
+# delete POSTS
+DELETE http://localhost:2105/posts/delete/65169ac984fc83fd97db691f
+
+#####
+
+
+# users --------------------
+
+# get USERS
+GET http://localhost:2105/users/get
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYSIsImxhc3ROYW1lIjoiYSIsImVtYWlsIjoiY2VsZWdhYm9yQGdtYWlsLmNvbSIsImRvYiI6MjEsImlhdCI6MTY5NzIxMTk0MiwiZXhwIjoxNjk3Mjk4MzQyfQ.GQKsGYJHr9q0k5vQmc6d3VF3zvrF_uFdyf_ZpsUhF8c
+#####
+
+# get by Id USERS
+GET http://localhost:2105/users/get/651c35cd07baf9e056776497
+#####
+
+# post USERS
+POST http://localhost:2105/users/post  HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "10",
+    "lastName": "3",
+    "email": "celegabor@yahoo.it",
+    "dob": 21,
+    "avatar": "https://static-00.iconduck.com/assets.00/avatar-default-symbolic-icon-2048x1949-pq9uiebg.png",
+    "password": "ciao"
+}
+####
+
+# patch USERS
+PATCH http://localhost:2105/users/patch/651c34c3db5d388fab0c1093 HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "1",
+    "lastName": "1",
+    "email": "celegabor@gmail.com",
+    "dob": 21,
+    "avatar": "https://static-00.iconduck.com/assets.00/avatar-default-symbolic-icon-2048x1949-pq9uiebg.png"
+}
+####
+
+# delete USERS
+DELETE http://localhost:2105/users/delete/651c34c3db5d388fab0c1093
+
+
+
+####
+
+#mail
+
+POST http://localhost:2105/send-email HTTP/1.1
+Content-Type: application/json
+
+{
+    "subject": "email funziona",
+    "text": "testo messaggio che funziona"
+}
+####
+
+#login
+
+POST http://localhost:2105/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "celegabor@gmail.com",
+    "password": "password"
+}
+
+#####
+
+# 
+GET http://localhost:2105/comment/get
+#####
+
+
+####
+
+POST http://localhost:2105/posts/652ac6a90f054112b8f56f50/comment/post HTTP/1.1
+Content-Type: application/json
+
+{
+    "comment": "6",
+    "author": "65295dc09c0a5451ba8293d2"
+}
+
+####
+
+PUT http://localhost:2105/comment/put/652e7b5b53933f6b93afc19b HTTP/1.1
+Content-Type: application/json
+
+{
+    "comment": "commento modificatoewgfdasdacs",
+    "author": "652964141b101dbbbc61e18f"
+}
+####
+
+DELETE http://localhost:2105/comment/delete/652e7000ec058f75f1acb6aa
