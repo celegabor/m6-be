@@ -42,17 +42,19 @@ passport.use(
 
 google.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }), (req, res)=>{
   const redirectUrl = `http://localhost:3000/successgoogle?user=${encodeURIComponent(JSON.stringify(req.user))}`
+  console.log('sono qua');
   res.redirect(redirectUrl)
 });
 
 google.get(
   '/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: '/' }),
+  passport.authenticate('google', { failureRedirect: '/', successRedirect: '/successgoogle'} ),
   (req, res) => {
     const user = req.user;
 
     const token = jwt.sign(user, process.env.JWT_SECRET);
-    const redirectUrl = `http://localhost:3000/successgoogle/callback/${encodeURIComponent(token)}`
+    const redirectUrl = `http://localhost:3000/successgoogle/${encodeURIComponent(token)}`
+    console.log(token);
     res.redirect(redirectUrl);
   }
 );
