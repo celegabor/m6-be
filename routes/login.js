@@ -37,7 +37,7 @@ login.post('/login', async(req, res)=>{
         dob: user.dob
     }, process.env.JWT_SECRET,{
         // quanto il token resta attivo prima di scadere 
-        expiresIn: '10h'
+        expiresIn: '10d'
     })
 
     // me lo faccio restituire nel header che poi lo prendi nella pag login
