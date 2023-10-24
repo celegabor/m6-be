@@ -258,7 +258,7 @@ posts.post('/posts/post',verifyToken, validatePost, async (req, res)=>{
             value: Number(req.body.readTime.value),
             unit: req.body.readTime.unit
         },
-        content: req.body.rate,
+        content: req.body.content,
         // author: {
         //     name: req.body.author.name,
         //     avatar: req.body.author.avatar
